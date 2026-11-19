@@ -41,16 +41,19 @@ public class Fill extends ExtensionService {
     }
 
     /**
-     * Calculates the fill price based on weeks since the last visit.
+     * Calculates the fill price based on weeks since the last visit:
+     * 2 weeks or less uses the 2-week price, 3 weeks or more uses the 3-week price.
      *
      * @return price in dollars
      */
     @Override
     public double calculatePrice() {
-        // TODO (Mia): return twoWeekPrice if weeksSinceLastVisit is 2 or less,
-        //   and threeWeekPrice if it is 3.
-        //   Decide what happens past 3 weeks (full set price? three-week price?).
-        return 0.0;
+        if (weeksSinceLastVisit <= 2) {
+            return twoWeekPrice;
+        } else {
+            // 3 weeks or more uses the 3-week price.
+            return threeWeekPrice;
+        }
     }
 
     /**

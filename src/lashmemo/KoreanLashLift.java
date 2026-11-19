@@ -75,8 +75,11 @@ public class KoreanLashLift extends Service {
      */
     @Override
     public double calculatePrice() {
-        // TODO (Mia): return flatPrice, plus addOnPrice only if lightExtensions is true.
-        return flatPrice;
+        if (lightExtensions) {
+            return flatPrice + addOnPrice;
+        } else {
+            return flatPrice;
+        }
     }
 
     /**

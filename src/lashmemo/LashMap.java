@@ -81,10 +81,11 @@ public class LashMap {
     @Override
     public String toString() {
         String result = style + " " + shape;
-        // TODO (Mia): loop through the layers array and add one line per layer,
-        //   like "\nTop: 11 to 15 mm, 0.07".
-        //   Hint: use LAYER_NAMES[i] for the name and layers[i] for the layer.
-        //   Skip any layer that is null.
+        for (int i = 0; i < layers.length; i++) {
+            if (layers[i] != null) {
+                result += "\n" + LAYER_NAMES[i] + ": " + layers[i];
+            }
+        }
         return result;
     }
 }

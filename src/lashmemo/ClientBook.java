@@ -50,9 +50,12 @@ public class ClientBook {
      * @throws ClientNotFoundException if no client has that name
      */
     public Client findClient(String name) throws ClientNotFoundException {
-        // TODO (Mia): loop through clients. If a client's name matches
-        //   (hint: equalsIgnoreCase), return that client.
-        //   If the loop finishes with no match, throw new ClientNotFoundException(name).
+        for (Client client : clients) {
+            if (client.getName().equalsIgnoreCase(name.trim())) {
+                return client;
+            }
+        }
+        // Went through every client with no match
         throw new ClientNotFoundException(name);
     }
 }
